@@ -1,21 +1,118 @@
 {
   "name": "helix-mode-vscode",
+  "icon": "images/icon.png",
   "displayName": "Helix Mode for VS Code",
   "description": "Helix-inspired keybindings and modal editor for VS Code",
-  "version": "0.0.1",
+  "publisher": "Ukwigana",
+  "author": {
+    "name": "Abubakari Bugaru"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abubakari3bugaru/helix-mode-vscode.git"
+  },
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.95.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
-    "commands": [
+    "keybindings": [
       {
-        "command": "helix-mode-vscode.helloWorld",
-        "title": "Hello World"
+        "key": "j k",
+        "command": "helixMode.switchToNormal",
+        "when": "editorTextFocus && helixMode == 'insert'"
+      },
+      {
+        "key": "i",
+        "command": "helixMode.switchToInsert",
+        "when": "editorTextFocus && helixMode == 'normal'"
+      },
+      {
+        "key": "*",
+        "command": "type",
+        "when": "editorTextFocus && helixMode == 'insert'"
+      },
+      {
+        "key": "v",
+        "command": "helixMode.switchToVisual",
+        "when": "editorTextFocus && helixMode == 'normal'"
+      },
+      {
+        "key": "w",
+        "command": "helixMode.moveToNextWord",
+        "when": "editorTextFocus && helixMode == 'normal'"
+      },
+      {
+        "key": "2 w",
+        "command": "helixMode.moveForwardTwoWords",
+        "when": "editorTextFocus && helixMode == 'normal'"
+      },
+      {
+        "key": "e",
+        "command": "helixMode.moveToEndOfWord",
+        "when": "editorTextFocus && helixMode == 'normal'"
+      },
+      {
+        "key": "b",
+        "command": "helixMode.moveToPreviousWord",
+        "when": "editorTextFocus && helixMode == 'normal'"
+      },
+      {
+        "key": "shift+0",
+        "command": "helixMode.moveToNextSentence",
+        "when": "editorTextFocus && helixMode == 'normal'"
+      },
+      {
+        "key": "shift+]",
+        "command": "helixMode.moveToNextParagraph",
+        "when": "editorTextFocus && helixMode == 'normal'"
+      },
+      {
+        "key": "/",
+        "command": "helixMode.searchForward",
+        "when": "editorTextFocus && helixMode == 'normal'"
+      },
+      {
+        "key": "shift+/",
+        "command": "helixMode.searchBackward",
+        "when": "editorTextFocus && helixMode == 'normal'"
+      },
+      {
+        "key": "v",
+        "command": "helixMode.enterVisualMode",
+        "when": "editorTextFocus && helixMode == 'normal'"
+      },
+      {
+        "key": "escape",
+        "command": "helixMode.exitVisualMode",
+        "when": "editorTextFocus && helixMode == 'visual'"
+      },
+      {
+        "key": "d",
+        "command": "helixMode.cut",
+        "when": "editorTextFocus && (helixMode == 'normal' || helixMode == 'visual')"
+      },
+      {
+        "key": "d d",
+        "command": "helixMode.deleteLines",
+        "when": "editorTextFocus && (helixMode == 'normal' || helixMode == 'visual')"
+      },
+      {
+        "key": "y",
+        "command": "helixMode.copy",
+        "when": "editorTextFocus && (helixMode == 'normal' || helixMode == 'visual')"
+      },
+      {
+        "key": "p",
+        "command": "helixMode.paste",
+        "when": "editorTextFocus && (helixMode == 'normal' || helixMode == 'visual')"
       }
     ]
   },
@@ -34,16 +131,16 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.95.0",
     "@types/mocha": "^10.0.9",
     "@types/node": "20.x",
+    "@types/vscode": "^1.95.0",
     "@typescript-eslint/eslint-plugin": "^8.10.0",
     "@typescript-eslint/parser": "^8.7.0",
-    "eslint": "^9.13.0",
-    "esbuild": "^0.24.0",
-    "npm-run-all": "^4.1.5",
-    "typescript": "^5.6.3",
     "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.4.1"
+    "@vscode/test-electron": "^2.4.1",
+    "esbuild": "^0.24.0",
+    "eslint": "^9.13.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.6.3"
   }
 }

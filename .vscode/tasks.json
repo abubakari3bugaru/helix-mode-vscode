@@ -21,7 +21,19 @@
             "type": "npm",
             "script": "watch:esbuild",
             "group": "build",
-            "problemMatcher": "$esbuild-watch",
+            // "problemMatcher": "$esbuild-watch",
+            // "problemMatcher": {
+            //     "owner": "typescript",
+            //     "fileLocation": ["relative", "${workspaceFolder}"],
+            //     "pattern": {
+            //         "regexp": "^(ERROR|WARNING)\\s+(.*)",
+            //         "message": 2,
+            //         "severity": 1,
+            //         "file": 3,
+            //         "line": 4,
+            //         "column": 5
+            //     }
+            // },
             "isBackground": true,
             "label": "npm: watch:esbuild",
             "presentation": {
